@@ -1,40 +1,38 @@
-import Students from './components/Students'
-import { Button } from './components/ui/button'
-import Count from './hooks/Count'
-import Register from './hooks/Register'
-import Users from './hooks/Users'
-const App = () => {
+import { Routes, Route } from 'react-router-dom'
 
-    let name = 'Varchala'
-    let age = 19
+import Navbar from './components/ui/Navbar'
+
+import Home from './pages/Home'
+import About from './pages/About'
+import Service from './pages/Service'
+import Contact from './pages/Contact'
+import Products from './pages/Products'
+import ProductDetails from './pages/ProductDetails'
+
+const App = () => {
 
     return (
         <>
-            <Users />
-            <div>
+            <Navbar />
 
-                <Button variant="default">Default</Button>
+            <Routes>
 
-                <Button variant="destructive">Delete</Button>
+                <Route path="/" element={<Home />} />
 
-                <Button variant="outline">Outline</Button>
+                <Route path="/about" element={<About />} />
 
-                <Button variant="secondary">Secondary</Button>
+                <Route path="/service" element={<Service />} />
 
-                <Button variant="ghost">Ghost</Button>
-                <Register />
+                <Route path="/contact" element={<Contact />} />
 
-                <Count />
+                <Route path="/products" element={<Products />} />
 
-                <h1>This is {name}</h1>
+                <Route
+                    path="/productDetails/:id"
+                    element={<ProductDetails />}
+                />
 
-                <p>Age: {age}</p>
-
-                <Students name={name} age={age} />
-
-                <Button>Click Me</Button>
-
-            </div>
+            </Routes>
         </>
     )
 }
